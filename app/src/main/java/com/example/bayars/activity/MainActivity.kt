@@ -1,4 +1,4 @@
-package com.example.bayars
+package com.example.bayars.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,9 +9,13 @@ import android.view.Menu
 import android.view.MenuItem
 import com.example.bayars.Fragment.fr_beranda
 import com.example.bayars.Fragment.fr_keuangan
+import com.example.bayars.R
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var fAuth: FirebaseAuth
 
     private val mOnNavigationitemSelectedlistener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -46,6 +50,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationitemSelectedlistener)
+        fAuth = FirebaseAuth.getInstance()
         val fragment = fr_beranda()
         addFragment(fragment)
         //setting toolbar
@@ -66,8 +71,18 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, ChatAct::class.java))
             true
         }
+        R.id.action_logout -> {
+            SignOut()
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+            true
+        }
         else -> {
             super.onOptionsItemSelected(item)
         }
+    }
+
+    fun SignOut() {
+        fAuth.signOut()
     }
 }

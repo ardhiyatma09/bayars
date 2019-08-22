@@ -6,9 +6,9 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.bayars.Lainnya
 import com.example.bayars.R
-import com.example.bayars.Semester
+import com.example.bayars.activity.Lainnya
+import com.example.bayars.activity.Semester
 import kotlinx.android.synthetic.main.fr_keuangan.*
 
 class fr_keuangan : Fragment() {
