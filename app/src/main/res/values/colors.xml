@@ -19,4 +19,7 @@
     <color name="error">#8b0000</color>
     <color name="info">#000080</color>
     <color name="success">#008000</color>
+
+    <color name="text_orange">#F08D17</color>
+    <color name="text_biru">#2771E1</color>
 </resources>
