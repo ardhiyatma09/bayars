@@ -40,7 +40,6 @@
             android:layout_height="wrap_content"/>
 
     <LinearLayout
-            android:background="@drawable/bg_bln"
             android:orientation="vertical"
             android:layout_below="@+id/semester"
             android:layout_marginTop="8dp"
@@ -62,7 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_below="@+id/bulan"
                 android:layout_height="2dp"
-                android:background="#000000"
+                android:background="#FF9800"
         />
         <ScrollView
                 android:layout_width="match_parent"

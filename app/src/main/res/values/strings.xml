@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Bayars</string>
+    <string name="settings_file_name">Bayars</string>
 </resources>
+

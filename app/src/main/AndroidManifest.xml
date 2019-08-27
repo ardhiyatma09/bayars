@@ -21,6 +21,8 @@
         <activity android:name=".activity.Lainnya"/>
         <activity android:name=".activity.LoginActivity"/>
         <activity android:name=".activity.MainActivity"/>
+        <activity android:name=".activity.AdminActivity"/>
+        <activity android:name=".activity.InputSiswaAct"/>
     </application>
 
 </manifest>

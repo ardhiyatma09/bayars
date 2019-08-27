@@ -7,6 +7,9 @@
     <color name="btn_presed">#666666</color>
     <color name="btn_unpresed">#999999</color>
 
+    <color name="btn_presed2">#979797</color>
+    <color name="btn_unpresed2">#DDDDDD</color>
+
     <!-- Warna Desain Biru -->
     <color name="biruDesain">#A3D4F7</color>
 

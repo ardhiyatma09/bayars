@@ -26,6 +26,12 @@ class fr_keuangan : Fragment() {
         semester12.setOnClickListener {
             startActivity(Intent(activity!!, Semester::class.java))
         }
+        semester56.setOnClickListener {
+            startActivity(Intent(activity!!, Semester::class.java))
+        }
+        semester34.setOnClickListener {
+            startActivity(Intent(activity!!, Semester::class.java))
+        }
         lain.setOnClickListener {
             startActivity(Intent(activity!!, Lainnya::class.java))
         }

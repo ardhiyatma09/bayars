@@ -86,7 +86,7 @@
     </RelativeLayout>
     <RelativeLayout
             android:id="@+id/lain"
-            android:background="@drawable/bg_smstr"
+            android:background="@drawable/btn_file"
             android:layout_below="@+id/semester56"
             android:layout_marginTop="20dp"
             android:layout_centerHorizontal="true"
