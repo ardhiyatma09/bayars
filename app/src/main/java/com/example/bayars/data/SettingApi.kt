@@ -16,7 +16,7 @@ class SettingApi {
     }
 
     fun readSetting(key: String): String {
-        return sharedSettings.getString(key, "na")
+        return sharedSettings.getString(key, "error apa ini")
     }
 
     fun addUpdateSettings(key: String, value: String) {

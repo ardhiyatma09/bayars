@@ -9,6 +9,8 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import com.example.bayars.R
+import com.example.bayars.Utilities.ArrayData
+import com.example.bayars.model.ModelData
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -17,6 +19,7 @@ import com.google.firebase.database.FirebaseDatabase
 class InputSiswaAct : AppCompatActivity() {
     val mAuth = FirebaseAuth.getInstance()
     lateinit var mDatabase: DatabaseReference
+    lateinit var mDatabase2: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +29,7 @@ class InputSiswaAct : AppCompatActivity() {
         val back = findViewById<View>(R.id.back_img) as ImageView
 
         mDatabase = FirebaseDatabase.getInstance().getReference("Akun")
-
+        mDatabase2 = FirebaseDatabase.getInstance().getReference("SPP")
         regBtn.setOnClickListener(View.OnClickListener {
             Register()
         })
@@ -46,6 +49,8 @@ class InputSiswaAct : AppCompatActivity() {
 
         val siswa = "Siswa"
         val admin = "Admin"
+        val status = "B"
+
 
         val email = emailTxt.text.toString()
         val nama = namaTxt.text.toString()
@@ -63,11 +68,19 @@ class InputSiswaAct : AppCompatActivity() {
                     if (task.isSuccessful) {
                         val user = mAuth.currentUser
                         val uid = user!!.uid
+                        ////SEMESTER 1-2
+//                        mDatabase2.child(uid).child("2019").setValue(ModelTahun())
+                        for (bulan in ArrayData.bulan) {
+                            mDatabase2.child(uid).child("2019").child(bulan).setValue(ModelData(status, "null"))
+                            mDatabase2.child(uid).child("2020").child(bulan).setValue(ModelData(status, "null"))
+                            mDatabase2.child(uid).child("2021").child(bulan).setValue(ModelData(status, "null"))
+                        }
+
                         mDatabase.child(uid).child("ID").setValue(uid)
                         mDatabase.child(uid).child("Nama").setValue(nama)
                         mDatabase.child(uid).child("Email").setValue(email)
                         mDatabase.child(uid).child("Alamat").setValue(alamat)
-                        mDatabase.child(uid).child("Kontak").setValue(jurusan)
+                        mDatabase.child(uid).child("Jurusan").setValue(jurusan)
                         mDatabase.child(uid).child("Password").setValue(password)
                         mDatabase.child(uid).child("Kelas").setValue(kelas)
                         mDatabase.child(uid).child("NIS").setValue(nis)
@@ -78,7 +91,7 @@ class InputSiswaAct : AppCompatActivity() {
                             startActivity(Intent(this@InputSiswaAct, AdminActivity::class.java))
                         } else {
                             mDatabase.child(uid).child("Status").setValue(siswa)
-                            startActivity(Intent(this@InputSiswaAct, LoginActivity::class.java))
+                            startActivity(Intent(this@InputSiswaAct, AdminActivity::class.java))
                         }
                         Toast.makeText(this, "Berhasil Daftar", Toast.LENGTH_SHORT).show()
                         finish()
