@@ -7,12 +7,10 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.RelativeLayout
-import com.bumptech.glide.Glide
 import com.example.bayars.R
 import com.example.bayars.helper.PrefsHelper
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.layout_admin.view.*
 
 class AdminActivity : AppCompatActivity() {
 
@@ -27,10 +25,8 @@ class AdminActivity : AppCompatActivity() {
 
         val regisTxt = findViewById<View>(R.id.btn_inputsiswa) as RelativeLayout
         helperPrefs = PrefsHelper(this)
+        fAuth = FirebaseAuth.getInstance()
 
-        Glide.with(view.context)
-            .load(R.drawable.avatar)
-            .into(view.img_upload)
         //setting toolbar
         setSupportActionBar(findViewById(R.id.toolbar))
         //home navigation

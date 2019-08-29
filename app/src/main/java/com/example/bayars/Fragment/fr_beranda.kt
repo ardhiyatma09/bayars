@@ -21,6 +21,7 @@ import android.webkit.MimeTypeMap
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.bayars.R
+import com.example.bayars.activity.Lainnya
 import com.example.bayars.helper.PrefsHelper
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -65,6 +66,15 @@ class fr_beranda : Fragment() {
             .load(R.drawable.avatar)
             .into(avatar)
 
+        bg_totallain.setOnClickListener {
+            startActivity(Intent(activity!!, Lainnya::class.java))
+        }
+        bg_totalspp.setOnClickListener {
+            val ft = fragmentManager!!.beginTransaction()
+            ft.replace(R.id.content, fr_keuangan(), "NewFragmentTag")
+            ft.addToBackStack(null)
+            ft.commit()
+        }
         avatar.setOnClickListener {
             when {
                 (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) -> {
@@ -104,6 +114,8 @@ class fr_beranda : Fragment() {
                         .load(p0.child("/Foto").value.toString())
                         .into(view.avatar)
                 }
+                view.tunggakanspp.text = p0.child("/TunggakanSPP").value.toString()
+                view.tunggakanlainnya.text = p0.child("/TunggakanLainnya").value.toString()
                 view.nama.text = p0.child("/Nama").value.toString()
                 view.nis.text = p0.child("/NIS").value.toString()
                 view.nama2.text = p0.child("/Nama").value.toString()

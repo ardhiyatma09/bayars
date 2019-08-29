@@ -20,8 +20,8 @@
             android:textColor="@android:color/black"
             android:textSize="30sp"
             android:textStyle="bold"
-            android:paddingBottom="30dp"
-            android:paddingTop="30dp"
+            android:paddingBottom="20dp"
+            android:paddingTop="20dp"
             android:layout_centerHorizontal="true"
             android:id="@+id/title"
             android:layout_below="@+id/toolbar"
@@ -177,7 +177,7 @@
                             android:layout_gravity="center"
                             android:src="@drawable/bni"
                             android:layout_width="60dp"
-                            android:layout_height="20dp"/>
+                            android:layout_height="21dp"/>
                     <TextView
                             android:text="Petunjuk Transfer BCA"
                             android:padding="10sp"
@@ -209,28 +209,45 @@
         </ScrollView>
     </LinearLayout>
     <LinearLayout
-            android:paddingStart="30dp"
+            android:padding="5dp"
+            android:id="@+id/g"
             android:layout_marginVertical="20dp"
-            android:layout_centerHorizontal="true"
+            android:orientation="vertical"
             android:background="#FFFFFF"
+            android:layout_marginStart="55dp"
             android:layout_below="@+id/ll_relativeex"
-            android:layout_width="300dp"
-            android:layout_height="50dp">
+            android:layout_width="200dp"
+            android:layout_height="wrap_content">
         <ImageView
                 android:layout_gravity="center"
-                android:src="@drawable/upload"
-                android:layout_width="25dp"
-                android:layout_height="25dp"/>
-        <Button
-                android:layout_gravity="center"
-                android:textSize="10sp"
-                android:background="@color/text_biru"
-                android:textColor="@android:color/white"
-                android:text="Upload bukti transfer"
-                android:layout_marginStart="30dp"
-                android:layout_width="210dp"
-                android:layout_height="35dp"/>
-
+                android:src="@drawable/uploadimg"
+                android:id="@+id/upload_bukti"
+                android:layout_weight="8"
+                android:padding="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="140dp"/>
     </LinearLayout>
+    <Button
+            android:layout_below="@+id/ll_relativeex"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"
+            android:textSize="10sp"
+            android:layout_toEndOf="@+id/g"
+            android:id="@+id/btn_upload_bukti"
+            android:background="@drawable/corner2"
+            android:textColor="@android:color/white"
+            android:text="UPLOAD"
+            android:layout_weight="2"
+            android:layout_marginEnd="55dp"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"/>
+    <ProgressBar
+            android:id="@+id/progressDownload"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/btn_upload_bukti"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
 </RelativeLayout>

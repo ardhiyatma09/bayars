@@ -177,7 +177,7 @@
                     </LinearLayout>
                     <LinearLayout
                             android:background="@drawable/bg_prof"
-                            android:id="@+id/Juni"
+                            android:id="@+id/juni"
                             android:orientation="horizontal"
                             android:layout_marginTop="12dp"
                             android:layout_width="match_parent"

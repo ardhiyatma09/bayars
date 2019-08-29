@@ -23,14 +23,20 @@ class fr_keuangan : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val intent = Intent(activity!!, Semester::class.java)
         semester12.setOnClickListener {
-            startActivity(Intent(activity!!, Semester::class.java))
-        }
-        semester56.setOnClickListener {
-            startActivity(Intent(activity!!, Semester::class.java))
+            intent.putExtra("tahun", "2019")
+            startActivity(intent)
         }
         semester34.setOnClickListener {
-            startActivity(Intent(activity!!, Semester::class.java))
+            //            startActivity(Intent(activity!!, Semester3::class.java))
+            intent.putExtra("tahun", "2020")
+            startActivity(intent)
+        }
+        semester56.setOnClickListener {
+            intent.putExtra("tahun", "2021")
+            startActivity(intent)
+//            startActivity(Intent(activity!!, Semester2::class.java))
         }
         lain.setOnClickListener {
             startActivity(Intent(activity!!, Lainnya::class.java))

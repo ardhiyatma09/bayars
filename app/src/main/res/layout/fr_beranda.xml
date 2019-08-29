@@ -126,7 +126,7 @@
         <RelativeLayout
                 android:id="@+id/total"
                 android:layout_centerVertical="true"
-                android:layout_toEndOf="@+id/dolar"
+                android:layout_centerHorizontal="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
             <TextView
@@ -140,31 +140,25 @@
                     android:layout_height="wrap_content"/>
 
             <TextView
-                    android:text="RP.0.00"
+                    android:text="Rp "
+                    android:id="@+id/rp"
                     android:textSize="25dp"
                     android:layout_marginStart="20dp"
                     android:textColor="#fff"
                     android:layout_below="@+id/tunggakan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
-        </RelativeLayout>
-        <RelativeLayout
-                android:layout_centerVertical="true"
-                android:layout_toEndOf="@+id/total"
-                android:layout_width="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_height="wrap_content">
             <TextView
-                    android:id="@+id/lihat"
-                    android:text="Lihat >"
-                    android:layout_centerVertical="true"
+                    android:text="2.800.000"
+                    android:textSize="25dp"
+                    android:id="@+id/tunggakantotal"
+                    android:layout_toEndOf="@+id/rp"
                     android:textColor="#fff"
-                    android:textSize="15dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="8dp"
+                    android:layout_below="@+id/tunggakan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
         </RelativeLayout>
+
     </RelativeLayout>
     <LinearLayout
             android:orientation="horizontal"
@@ -178,6 +172,7 @@
                 android:background="@drawable/bg_total"
                 android:layout_centerHorizontal="true"
                 android:layout_width="match_parent"
+                android:id="@+id/bg_totalspp"
                 android:layout_weight="1"
                 android:layout_marginEnd="10dp"
                 android:layout_height="90dp">
@@ -196,17 +191,18 @@
                     android:layout_height="wrap_content">
                 <TextView
                         android:text="SPP"
+                        android:textSize="14dp"
                         android:id="@+id/spp2"
                         android:layout_marginStart="20dp"
                         android:textStyle="bold"
                         android:textColor="#fff"
-                        android:textSize="14dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
                 <TextView
                         android:text="RP.0.00"
                         android:textSize="15dp"
+                        android:id="@+id/tunggakanspp"
                         android:layout_marginStart="20dp"
                         android:textColor="#fff"
                         android:layout_below="@+id/spp2"
@@ -216,7 +212,7 @@
         </RelativeLayout>
         <RelativeLayout
                 android:background="@drawable/bg_total"
-                android:id="@+id/bg_total"
+                android:id="@+id/bg_totallain"
                 android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:layout_marginStart="10dp"
@@ -247,6 +243,7 @@
                 <TextView
                         android:text="RP.0.00"
                         android:textSize="15dp"
+                        android:id="@+id/tunggakanlainnya"
                         android:layout_marginStart="20dp"
                         android:textColor="#fff"
                         android:layout_below="@+id/lainnya2"

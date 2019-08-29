@@ -50,6 +50,8 @@ class InputSiswaAct : AppCompatActivity() {
         val siswa = "Siswa"
         val admin = "Admin"
         val status = "B"
+        val tunggakan = "4.800.000"
+        val tunggakan2 = "500.000"
 
 
         val email = emailTxt.text.toString()
@@ -85,7 +87,8 @@ class InputSiswaAct : AppCompatActivity() {
                         mDatabase.child(uid).child("Kelas").setValue(kelas)
                         mDatabase.child(uid).child("NIS").setValue(nis)
                         mDatabase.child(uid).child("Foto").setValue("null")
-                        mDatabase.child(uid).child("Tunggakan").setValue("null")
+                        mDatabase.child(uid).child("TunggakanSPP").setValue(tunggakan)
+                        mDatabase.child(uid).child("TunggakanLainnya").setValue(tunggakan2)
                         if (email.split("@")[1].equals("admin.spp")) {
                             mDatabase.child(uid).child("Status").setValue(admin)
                             startActivity(Intent(this@InputSiswaAct, AdminActivity::class.java))

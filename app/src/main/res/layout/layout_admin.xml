@@ -71,7 +71,7 @@
                     app:civ_border_color="#008FF7"/>
 
             <RelativeLayout
-                    android:layout_toEndOf="@id/avatar"
+                    android:layout_toEndOf="@id/img_upload"
                     android:layout_centerVertical="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
