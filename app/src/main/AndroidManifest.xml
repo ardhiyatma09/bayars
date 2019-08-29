@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.example.bayars">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
     <application
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
@@ -9,13 +12,24 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".activity.ChatAct"/>
+        <activity android:name=".activity.Semester"/>
+        <activity android:name=".activity.Lainnya"/>
+        <activity android:name=".activity.LoginActivity"/>
+        <activity android:name=".activity.MainActivity"/>
+        <activity android:name=".activity.AdminActivity"/>
+        <activity android:name=".activity.InputSiswaAct"/>
+        <activity android:name=".activity.Semester2"/>
+        <activity android:name=".activity.Semester3"/>
+        <activity android:name=".activity.UploadBuktiTF"/>
+        <activity android:name=".activity.BayarActivity"/>
     </application>
 
 </manifest>
