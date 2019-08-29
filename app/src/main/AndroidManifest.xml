@@ -26,9 +26,7 @@
         <activity android:name=".activity.MainActivity"/>
         <activity android:name=".activity.AdminActivity"/>
         <activity android:name=".activity.InputSiswaAct"/>
-        <activity android:name=".activity.Semester2"/>
-        <activity android:name=".activity.Semester3"/>
-        <activity android:name=".activity.UploadBuktiTF"/>
+        <activity android:name=".activity.ListSiswaAct"/>
         <activity android:name=".activity.BayarActivity"/>
     </application>
 

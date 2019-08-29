@@ -100,7 +100,7 @@
             </RelativeLayout>
         </RelativeLayout>
         <RelativeLayout
-                android:id="@+id/total1"
+                android:id="@+id/totalsiswa"
                 android:background="@drawable/bg_total"
                 android:layout_below="@+id/bg_prof"
                 android:layout_marginTop="16dp"
@@ -154,7 +154,7 @@
                 android:orientation="horizontal"
                 android:id="@+id/aaa"
                 android:background="#E9E9E9"
-                android:layout_below="@+id/total1"
+                android:layout_below="@+id/totalsiswa"
                 android:layout_width="match_parent"
                 android:layout_marginTop="16dp"
                 android:layout_height="wrap_content">

@@ -11,6 +11,8 @@ import com.example.bayars.R
 import com.example.bayars.helper.PrefsHelper
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.toolbar
+import kotlinx.android.synthetic.main.layout_admin.*
 
 class AdminActivity : AppCompatActivity() {
 
@@ -36,6 +38,10 @@ class AdminActivity : AppCompatActivity() {
 
         regisTxt.setOnClickListener {
             startActivity(Intent(this, InputSiswaAct::class.java))
+        }
+
+        totalsiswa.setOnClickListener{
+            startActivity(Intent(this, ListSiswaAct::class.java))
         }
     }
 
