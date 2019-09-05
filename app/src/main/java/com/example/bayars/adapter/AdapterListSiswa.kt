@@ -1,14 +1,13 @@
 package com.example.bayars.adapter
 
 import android.content.Context
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import com.example.bayars.R
 import com.example.bayars.model.Siswa
 
@@ -25,6 +24,9 @@ class AdapterListSiswa(val mCtx: Context, val layoutResId: Int, val list: List<S
 
 
         val user = list[position]
+        Glide.with(mCtx)
+            .load(user.Foto)
+            .into(foto)
 
         textNama.text = user.Nama
         textTunggakan.text = user.Tunggakan
