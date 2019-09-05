@@ -1,9 +1,9 @@
 package com.example.bayars.adapter
 
+import android.app.AlertDialog
 import android.content.Context
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,12 +12,22 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.example.bayars.R
-import com.example.bayars.Utilities.ArrayData
+import com.example.bayars.helper.PrefsHelper
 import com.example.bayars.model.ModelData
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
-class AdminKonfirmasiAdapter(val mContext: Context, list: ArrayList<HashMap<String, Any>>) :
+class AdminKonfirmasiAdapter(val mContext: Context, list: ArrayList<HashMap<String, Any>>, val uidSiswa: String) :
     RecyclerView.Adapter<AdminKonfirmasiAdapter.AdminKonfirmasiViewHolder>() {
     val itemKonfirmasi: ArrayList<HashMap<String, Any>> = list
+
+    lateinit var dbref: DatabaseReference
+    lateinit var helperPrefs: PrefsHelper
+
+    init {
+        helperPrefs = PrefsHelper(mContext)
+    }
+
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): AdminKonfirmasiViewHolder {
         val view: View = LayoutInflater.from(p0.context).inflate(
@@ -32,21 +42,37 @@ class AdminKonfirmasiAdapter(val mContext: Context, list: ArrayList<HashMap<Stri
     }
 
     override fun onBindViewHolder(p0: AdminKonfirmasiViewHolder, p1: Int) {
-        try {
-            val uploadBuktiModel = itemKonfirmasi[p1][ArrayData.bulan[p1]] as ModelData
-//        val iduploads = uploadBuktiModel.getId_upload().toString()
-            p0.status.text = uploadBuktiModel.status
-            Glide.with(mContext)
-                .load(uploadBuktiModel.bukti)
-                .into(p0.bukti)
 
-            if (p0.status.text.equals("B")) {
-                p0.status.setBackgroundColor(ContextCompat.getColor(mContext, R.color.warning))
-            } else if (p0.status.text.equals("S")) {
-                p0.status.setBackgroundColor(ContextCompat.getColor(mContext, R.color.biruDesain))
+        val uploadBuktiModel: ModelData = itemKonfirmasi[p1][itemKonfirmasi[p1]["bulan"]] as ModelData
+//        val iduploads = uploadBuktiModel.getId_upload().toString()
+        p0.status.text = uploadBuktiModel.status
+        Glide.with(mContext)
+            .load(uploadBuktiModel.bukti)
+            .into(p0.bukti)
+
+        if (p0.status.text.equals("Belum Konfirmasi")) {
+            p0.status.setBackgroundColor(ContextCompat.getColor(mContext, R.color.warning))
+        } else if (p0.status.text.equals("Konfirmasi")) {
+            p0.status.setBackgroundColor(ContextCompat.getColor(mContext, R.color.biruDesain))
+        }
+
+        p0.status.setOnClickListener {
+            val dialog = AlertDialog.Builder(mContext)
+            dialog.setTitle("Konfirmasi Pembayaran")
+            dialog.setMessage("Ingin mengkonfirmasi pembayaran?")
+            dialog.setPositiveButton("YA") { d, i ->
+                dbref = FirebaseDatabase.getInstance()
+                    .getReference("SPP/$uidSiswa/${itemKonfirmasi[p1]["tahun"]}/${itemKonfirmasi[p1]["bulan"]}")
+                dbref.child("status").setValue("Konfirmasi")
+                dbref.push()
             }
-        } catch (e: TypeCastException) {
-            Log.e("error", "ini", e)
+            dialog.setNegativeButton("TIDAK") { d2, i ->
+                {
+
+                }
+            }
+//            val uid = helperPrefs.getUI()
+            dialog.create().show()
         }
 
 

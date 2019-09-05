@@ -109,6 +109,7 @@ class BayarActivity : AppCompatActivity() {
                     Glide.with(this@BayarActivity)
                         .load(p0.child("/${intent.getStringExtra("bulan")}/bukti").value.toString())
                         .into(upload_bukti)
+
                 }
             }
         })
@@ -117,6 +118,10 @@ class BayarActivity : AppCompatActivity() {
             val upload_img = upload_bukti.imageAlpha.toString()
 
             if (upload_img.isNotEmpty()) {
+                val uid = helperPrefs.getUI()
+                dbRef = FirebaseDatabase.getInstance().getReference("SPP/$uid")
+                dbRef.child("${intent.getStringExtra("tahun")}").child("${intent.getStringExtra("bulan")}")
+                    .child("status").setValue("Belum Konfirmasi")
                 Toast.makeText(this, "Sukses!!", Toast.LENGTH_SHORT).show()
                 finish()
             } else {

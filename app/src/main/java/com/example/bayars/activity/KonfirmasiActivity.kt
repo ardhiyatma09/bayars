@@ -50,7 +50,6 @@ class KonfirmasiActivity : AppCompatActivity() {
 
 //        getDataAdmin()
         getDataOrder()
-
     }
 
     fun getDataAdmin() {
@@ -86,7 +85,7 @@ class KonfirmasiActivity : AppCompatActivity() {
                 spinnerTahun.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                         val data = ArrayList<HashMap<String, Any>>()
-                        for (dataS2 in p0.child(tahun.get(position)).children) {
+                        for (dataS2 in p0.child(tahun[position]).children) {
                             val map = HashMap<String, Any>()
                             map["tahun"] = tahun[position]
                             map[dataS2.key.toString()] =
@@ -94,14 +93,17 @@ class KonfirmasiActivity : AppCompatActivity() {
                                     dataS2.child("status").value.toString(),
                                     dataS2.child("bukti").value.toString()
                                 )
+                            map["bulan"] = dataS2.key.toString()
                             data.add(map)
                             e(
                                 "data",
-                                "${map.get("tahun")}/${dataS2.child("bukti").value.toString()}, " +
+                                "${dataS2.key.toString()}/${dataS2.child("bukti").value.toString()}, " +
                                         dataS2.child("status").value.toString()
                             )
                         }
-                        adminkonfirmasiAdapter = AdminKonfirmasiAdapter(this@KonfirmasiActivity, data)
+
+                        adminkonfirmasiAdapter =
+                            AdminKonfirmasiAdapter(this@KonfirmasiActivity, data, intent.getStringExtra("uidSiswa"))
                         rvadminkonfirmasi!!.adapter = adminkonfirmasiAdapter
                     }
 
