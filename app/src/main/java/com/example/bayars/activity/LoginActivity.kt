@@ -9,9 +9,9 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.example.bayars.R
-import com.example.bayars.Utilities.Const
 import com.example.bayars.data.SettingApi
 import com.example.bayars.helper.PrefsHelper
+import com.example.bayars.utilities.Const
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
@@ -60,7 +60,7 @@ class LoginActivity : AppCompatActivity() {
                             override fun onDataChange(p0: DataSnapshot) {
                                 var userid = p0.child("/ID").value.toString()
                                 var nama = p0.child("/Nama").value.toString()
-                                var photo = p0.child("/bukti").value.toString()
+                                var photo = p0.child("/Foto").value.toString()
 
                                 set.addUpdateSettings(Const.PREF_MY_ID, userid)
                                 set.addUpdateSettings(Const.PREF_MY_NAME, nama)

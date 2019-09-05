@@ -19,17 +19,42 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.ChatAct"/>
         <activity android:name=".activity.Semester"/>
         <activity android:name=".activity.Lainnya"/>
         <activity android:name=".activity.LoginActivity"/>
         <activity android:name=".activity.MainActivity"/>
         <activity android:name=".activity.AdminActivity"/>
         <activity android:name=".activity.InputSiswaAct"/>
-        <activity android:name=".activity.Semester2"/>
-        <activity android:name=".activity.Semester3"/>
-        <activity android:name=".activity.UploadBuktiTF"/>
         <activity android:name=".activity.BayarActivity"/>
+        //-----------------------------------------------\\
+        <activity android:name=".activity.ChatActivity"/>
+
+        <service android:name=".service.NotificationService"
+                 android:permission="android.permission.BIND_JOB_SERVICE"
+                 android:exported="true"/>
+        <service
+                android:name=".service.FirebaseMsgServices"
+                android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <service
+                android:name=".service.FirebaseInstncIDServices"
+                android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+        <activity
+                android:name=".activity.ChatDetailsActivity"
+                android:label="List">
+        </activity>
+        <activity
+                android:name=".activity.SelectFriendActivity"
+                android:label="Select Friend">
+        </activity>
+        //----------------------------------------------\\
     </application>
 
 </manifest>

@@ -9,8 +9,8 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import com.example.bayars.R
-import com.example.bayars.Utilities.ArrayData
 import com.example.bayars.model.ModelData
+import com.example.bayars.utilities.ArrayData
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference

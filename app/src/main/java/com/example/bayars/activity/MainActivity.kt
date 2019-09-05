@@ -7,9 +7,9 @@ import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import com.example.bayars.Fragment.fr_beranda
-import com.example.bayars.Fragment.fr_keuangan
 import com.example.bayars.R
+import com.example.bayars.fragment.fr_beranda
+import com.example.bayars.fragment.fr_keuangan
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.action_chat -> {
-            startActivity(Intent(this, ChatAct::class.java))
+            startActivity(Intent(this, ChatActivity::class.java))
             true
         }
         R.id.action_logout -> {

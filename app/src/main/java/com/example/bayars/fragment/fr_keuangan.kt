@@ -1,4 +1,4 @@
-package com.example.bayars.Fragment
+package com.example.bayars.fragment
 
 import android.content.Intent
 import android.os.Bundle

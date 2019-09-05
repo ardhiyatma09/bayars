@@ -1,4 +1,4 @@
-package com.example.bayars.Fragment
+package com.example.bayars.fragment
 
 import android.Manifest
 import android.annotation.TargetApi

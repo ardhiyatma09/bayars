@@ -46,7 +46,7 @@ class AdminActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.action_chat -> {
-            startActivity(Intent(this, ChatAct::class.java))
+            startActivity(Intent(this, ChatActivity::class.java))
             true
         }
         R.id.action_logout -> {

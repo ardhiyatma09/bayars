@@ -1,4 +1,4 @@
-package com.example.bayars.Utilities
+package com.example.bayars.utilities
 
 class ArrayData {
 

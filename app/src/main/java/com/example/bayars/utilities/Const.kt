@@ -1,4 +1,4 @@
-package com.example.bayars.Utilities
+package com.example.bayars.utilities
 
 class Const {
     companion object {
@@ -15,7 +15,7 @@ class Const {
 
         const val NODE_ID = "ID"
         const val NODE_NAME = "Nama"
-        const val NODE_PHOTO = "bukti"
+        const val NODE_PHOTO = "Foto"
 
         const val LOG_TAG = "fchat"
 
