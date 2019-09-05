@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.example.bayars">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
@@ -26,10 +27,9 @@
         <activity android:name=".activity.MainActivity"/>
         <activity android:name=".activity.AdminActivity"/>
         <activity android:name=".activity.InputSiswaAct"/>
-        <activity android:name=".activity.Semester2"/>
-        <activity android:name=".activity.Semester3"/>
-        <activity android:name=".activity.UploadBuktiTF"/>
+        <activity android:name=".activity.ListSiswaAct"/>
         <activity android:name=".activity.BayarActivity"/>
+        <activity android:name=".activity.KonfirmasiActivity"/>
     </application>
 
 </manifest>

@@ -39,6 +39,10 @@ class BayarActivity : AppCompatActivity() {
     lateinit var filePath: Uri
     lateinit var stoRef: StorageReference
     lateinit var fstorage: FirebaseStorage
+    lateinit var helperPref: PrefsHelper
+
+    var id_upload: Int? = null
+    var bukti: Int? = null
 
     val mAuth = FirebaseAuth.getInstance()
     val REQUEST_IMAGE = 10002
@@ -49,6 +53,8 @@ class BayarActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.bayar_activity)
+
+        helperPref = PrefsHelper(this)
 
         //setting toolbar
         setSupportActionBar(findViewById(R.id.toolbar))
@@ -103,6 +109,7 @@ class BayarActivity : AppCompatActivity() {
                     Glide.with(this@BayarActivity)
                         .load(p0.child("/${intent.getStringExtra("bulan")}/bukti").value.toString())
                         .into(upload_bukti)
+
                 }
             }
         })
@@ -111,6 +118,10 @@ class BayarActivity : AppCompatActivity() {
             val upload_img = upload_bukti.imageAlpha.toString()
 
             if (upload_img.isNotEmpty()) {
+                val uid = helperPrefs.getUI()
+                dbRef = FirebaseDatabase.getInstance().getReference("SPP/$uid")
+                dbRef.child("${intent.getStringExtra("tahun")}").child("${intent.getStringExtra("bulan")}")
+                    .child("status").setValue("Belum Konfirmasi")
                 Toast.makeText(this, "Sukses!!", Toast.LENGTH_SHORT).show()
                 finish()
             } else {
@@ -207,6 +218,8 @@ class BayarActivity : AppCompatActivity() {
             }
 
     }
+
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_actionbar, menu)
         return super.onCreateOptionsMenu(menu)
