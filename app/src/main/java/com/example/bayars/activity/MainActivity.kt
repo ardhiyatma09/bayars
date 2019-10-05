@@ -82,6 +82,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        val user = fAuth.currentUser
+        if (user == null) {
+            finish()
+        }
+    }
+
     fun SignOut() {
         fAuth.signOut()
     }

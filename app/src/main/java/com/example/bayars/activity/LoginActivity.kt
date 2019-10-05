@@ -94,11 +94,11 @@ class LoginActivity : AppCompatActivity() {
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
             helperPrefs.saveUID(user.uid) //berfungsi untuk save uid ke sharedpreferences
-            helperPrefs.saveStatus("User")
+            helperPrefs.saveStatus("Siswa")
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         } else {
-            Log.e("TAG_ERROR", "user tidak ada")
+            Log.e("TAG_ERROR", "Siswa tidak ada")
         }
     }
 

@@ -18,7 +18,6 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.webkit.MimeTypeMap
-import android.widget.RelativeLayout
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.example.bayars.R
@@ -28,35 +27,34 @@ import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.activity_main.toolbar
-import kotlinx.android.synthetic.main.layout_admin.*
+import kotlinx.android.synthetic.main.bayar_activity.*
 import java.io.IOException
 import java.util.*
 
+class BayarLainnyaActivity : AppCompatActivity() {
 
-class AdminActivity : AppCompatActivity() {
-
-    lateinit var stoRef: StorageReference
     lateinit var fAuth: FirebaseAuth
     lateinit var helperPrefs: PrefsHelper
-    lateinit var filePath: Uri
     lateinit var dbRef: DatabaseReference
+    lateinit var filePath: Uri
+    lateinit var stoRef: StorageReference
     lateinit var fstorage: FirebaseStorage
+    lateinit var helperPref: PrefsHelper
 
+    var id_upload: Int? = null
+    var bukti: Int? = null
+
+    val mAuth = FirebaseAuth.getInstance()
     val REQUEST_IMAGE = 10002
     val PERMISSION_REQUEST_CODE = 10003
     var value = 0.0
 
     @TargetApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.layout_admin)
+        setContentView(R.layout.bayar_activity)
 
-        val regisTxt = findViewById<View>(R.id.btn_inputsiswa) as RelativeLayout
-        helperPrefs = PrefsHelper(this)
-        fAuth = FirebaseAuth.getInstance()
-        fstorage = FirebaseStorage.getInstance()
-        stoRef = fstorage.reference
+        helperPref = PrefsHelper(this)
 
         //setting toolbar
         setSupportActionBar(findViewById(R.id.toolbar))
@@ -65,19 +63,16 @@ class AdminActivity : AppCompatActivity() {
         toolbar.title = ""
         toolbar.setLogo(R.mipmap.ic_logo)
 
-        regisTxt.setOnClickListener {
-            startActivity(Intent(this, InputSiswaAct::class.java))
-        }
+//        e("tahun", intent.getStringExtra("tahun"))
 
-        konfirmasi.setOnClickListener {
-            startActivity(Intent(this, ListSiswaAct::class.java))
-        }
+        fAuth = FirebaseAuth.getInstance()
+        helperPrefs = PrefsHelper(this)
+        fstorage = FirebaseStorage.getInstance()
+        stoRef = fstorage.reference
 
-        Glide.with(this)
-            .load(R.drawable.avatar)
-            .into(img_upload)
 
-        img_upload.setOnClickListener {
+
+        upload_bukti.setOnClickListener {
             when {
                 (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) -> {
                     if (ContextCompat.checkSelfPermission(
@@ -102,27 +97,38 @@ class AdminActivity : AppCompatActivity() {
             }
 
         }
-
-
-        val dbRefUser = FirebaseDatabase.getInstance().getReference("Akun/${helperPrefs.getUI()}")
-        dbRefUser.addValueEventListener(object : ValueEventListener {
+        val dbRefUser = FirebaseDatabase.getInstance().getReference("SPP/${helperPrefs.getUI()}")
+        dbRefUser.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
 
             }
 
             override fun onDataChange(p0: DataSnapshot) {
                 Log.e("uid", helperPrefs.getUI())
-                if (p0.child("/Foto").value.toString() != "null") {
-                    Glide.with(this@AdminActivity)
-                        .load(p0.child("/Foto").value.toString())
-                        .into(img_upload)
+                if (p0.child("/${intent.getStringExtra("tahun")}").value.toString() != "null") {
+                    Glide.with(this@BayarLainnyaActivity)
+                        .load(p0.child("/${intent.getStringExtra("bulan")}/bukti").value.toString())
+                        .into(upload_bukti)
+
                 }
-                namaadmin.text = p0.child("/Nama").value.toString()
-                status.text = p0.child("/Status").value.toString()
+            }
+        })
+        btn_upload_bukti.setOnClickListener {
+            dbRef = FirebaseDatabase.getInstance().reference
+            val upload_img = upload_bukti.imageAlpha.toString()
+
+            if (upload_img.isNotEmpty()) {
+                val uid = helperPrefs.getUI()
+                dbRef = FirebaseDatabase.getInstance().getReference("SPP/$uid")
+                dbRef.child("${intent.getStringExtra("tahun")}").child("${intent.getStringExtra("bulan")}")
+                    .child("status").setValue("B")
+                Toast.makeText(this, "Sukses!!", Toast.LENGTH_SHORT).show()
+                finish()
+            } else {
+                Toast.makeText(this@BayarLainnyaActivity, "Pilih Bukti terlebih Dahulu!!", Toast.LENGTH_SHORT).show()
             }
 
-        })
-
+        }
     }
 
     private fun imageChooser() {
@@ -140,7 +146,7 @@ class AdminActivity : AppCompatActivity() {
                 if (grantResults.isEmpty() || grantResults[0]
                     == PackageManager.PERMISSION_DENIED
                 ) {
-                    Toast.makeText(this@AdminActivity, "izin ditolak!!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@BayarLainnyaActivity, "izin ditolak!!", Toast.LENGTH_SHORT).show()
                 } else {
                     imageChooser()
                 }
@@ -164,7 +170,7 @@ class AdminActivity : AppCompatActivity() {
                     )
                     Glide.with(this)
                         .load(bitmap)
-                        .into(img_upload)
+                        .into(upload_bukti)
                 } catch (x: IOException) {
                     x.printStackTrace()
                 }
@@ -172,6 +178,7 @@ class AdminActivity : AppCompatActivity() {
             }
         }
     }
+
 
     fun GetFileExtension(uri: Uri): String? {
         val contentResolverz = this.contentResolver
@@ -187,14 +194,10 @@ class AdminActivity : AppCompatActivity() {
             setCanceledOnTouchOutside(false)
             show()
         }
-        val data = FirebaseStorage.getInstance()
-
-
-        val user = fAuth.currentUser
         val uid = helperPrefs.getUI()
         val nameX = UUID.randomUUID().toString()
         val ref: StorageReference = stoRef
-            .child("images/${nameX}.${GetFileExtension(filePath)}")
+            .child("bukti_tranfer/${nameX}.${GetFileExtension(filePath)}")
 //        var storage = data.reference.child("Image_Profile/$nameX").putFile(filePath)
         ref.putFile(filePath)
             .addOnProgressListener { taskSnapshot ->
@@ -202,11 +205,12 @@ class AdminActivity : AppCompatActivity() {
             }
             .addOnSuccessListener {
                 ref.downloadUrl.addOnSuccessListener {
-                    dbRef = FirebaseDatabase.getInstance().getReference("Akun/$uid")
-                    dbRef.child("Foto").setValue(it.toString())
+                    dbRef = FirebaseDatabase.getInstance().getReference("SPP/$uid")
+                    dbRef.child("${intent.getStringExtra("tahun")}").child("${intent.getStringExtra("bulan")}")
+                        .child("bukti").setValue(it.toString())
                 }
-                Toast.makeText(this@AdminActivity, "berhasil upload", Toast.LENGTH_SHORT).show()
-                progressDownload2.visibility = View.GONE
+                Toast.makeText(this@BayarLainnyaActivity, "berhasil upload", Toast.LENGTH_SHORT).show()
+                progressDownload.visibility = View.GONE
                 progress.hide()
             }
             .addOnFailureListener { exception ->
@@ -215,6 +219,7 @@ class AdminActivity : AppCompatActivity() {
 
     }
 
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_actionbar, menu)
         return super.onCreateOptionsMenu(menu)
@@ -222,29 +227,16 @@ class AdminActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.action_chat -> {
-            startActivity(Intent(this, ChatActivity::class.java))
+            Toast.makeText(this, "Bisa", Toast.LENGTH_SHORT).show()
             true
         }
         R.id.action_logout -> {
-            SignOut()
-            startActivity(Intent(this, LoginActivity::class.java))
-            finish()
+            Toast.makeText(this, "Bisa", Toast.LENGTH_SHORT).show()
             true
         }
+
         else -> {
             super.onOptionsItemSelected(item)
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        val user = fAuth.currentUser
-        if (user == null) {
-            finish()
-        }
-    }
-
-    fun SignOut() {
-        fAuth.signOut()
     }
 }
