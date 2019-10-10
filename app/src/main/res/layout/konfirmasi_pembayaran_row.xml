@@ -8,46 +8,50 @@
 
     <RelativeLayout
             android:layout_width="330dp"
+            android:padding="30px"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:background="#EEF1F6">
-
-        <!--<TextView-->
-
-        <!--android:id="@+id/mvUser"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:textAlignment="center"-->
-        <!--android:text="Nama User"-->
-        <!--android:textColor="@android:color/black"-->
-        <!--android:textStyle="bold"-->
-        <!--android:padding="10dp"/>-->
+            android:background="@drawable/bg_total">
         <View
-                android:background="#D3CFCF"
+                android:background="#004277"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"/>
 
         <ImageView
                 android:src="@mipmap/ic_launcher_round"
                 android:id="@+id/bukti"
-                android:layout_width="200dp"
-                android:layout_height="200dp"/>
+                android:layout_width="100dp"
+                android:layout_height="100dp"/>
+        <RelativeLayout
 
-        <TextView
-                android:background="@color/text_biru"
-                android:text="Status"
                 android:layout_toRightOf="@+id/bukti"
-                android:id="@+id/mvStatus"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="right"
-                android:padding="40dp"
-                android:textStyle="bold"
-                android:textColor="@android:color/white"
-                android:textAlignment="center"/>
+                android:layout_height="wrap_content">
+            <TextView
+                    android:id="@+id/jdl"
+                    android:layout_marginTop="40px"
+                    android:text="Status"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            <TextView
+                    android:background="@drawable/bg_total"
+                    android:text="Status"
+                    android:id="@+id/mvStatus"
+                    android:layout_below="@+id/jdl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="right"
+                    android:padding="5dp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:textAlignment="center"/>
+        </RelativeLayout>
 
         <View
-                android:background="#D3CFCF"
+                android:background="#004277"
                 android:layout_below="@id/bukti"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"/>

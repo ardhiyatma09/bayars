@@ -58,7 +58,7 @@ class LoginActivity : AppCompatActivity() {
                         val dbRefUser = FirebaseDatabase.getInstance().getReference("Akun/${helperPrefs.getUI()}")
                         dbRefUser.addValueEventListener((object : ValueEventListener {
                             override fun onDataChange(p0: DataSnapshot) {
-                                var userid = p0.child("/ID").value.toString()
+                                var userid = p0.child("/UID").value.toString()
                                 var nama = p0.child("/Nama").value.toString()
                                 var photo = p0.child("/Foto").value.toString()
 

@@ -50,23 +50,37 @@ class AdminKonfirmasiAdapter(val mContext: Context, list: ArrayList<HashMap<Stri
             .load(uploadBuktiModel.bukti)
             .into(p0.bukti)
 
-        if (p0.status.text.equals("Belum Konfirmasi")) {
+        p0.bukti.setOnClickListener {
+            val view = LayoutInflater.from(mContext).inflate(R.layout.dialog_image, null)
+            val dialog = AlertDialog.Builder(mContext)
+            val imgPopup = view.findViewById<ImageView>(R.id.dialogImage)
+            imgPopup.setImageDrawable(p0.bukti.drawable)
+            dialog.setView(view)
+            dialog.show()
+        }
+
+        if (p0.status.text.equals("B")) {
+            p0.status.text = "Belum Membayar"
+            p0.status.setBackgroundColor(ContextCompat.getColor(mContext, R.color.colorAccent))
+        } else if (p0.status.text.equals("M")) {
+            p0.status.text = "Menunggu Konfirmasi"
             p0.status.setBackgroundColor(ContextCompat.getColor(mContext, R.color.warning))
-        } else if (p0.status.text.equals("Konfirmasi")) {
-            p0.status.setBackgroundColor(ContextCompat.getColor(mContext, R.color.biruDesain))
+        } else if (p0.status.text.equals("S")) {
+            p0.status.text = "Lunas"
+            p0.status.setBackgroundColor(ContextCompat.getColor(mContext, R.color.success))
         }
 
         p0.status.setOnClickListener {
             val dialog = AlertDialog.Builder(mContext)
             dialog.setTitle("Konfirmasi Pembayaran")
-            dialog.setMessage("Ingin mengkonfirmasi pembayaran?")
-            dialog.setPositiveButton("YA") { d, i ->
+            dialog.setMessage("Yakin bukti Tranfer masuk rekening Sekolah?")
+            dialog.setPositiveButton("Yakin") { d, i ->
                 dbref = FirebaseDatabase.getInstance()
                     .getReference("SPP/$uidSiswa/${itemKonfirmasi[p1]["tahun"]}/${itemKonfirmasi[p1]["bulan"]}")
-                dbref.child("status").setValue("Konfirmasi")
+                dbref.child("status").setValue("S")
                 dbref.push()
             }
-            dialog.setNegativeButton("TIDAK") { d2, i ->
+            dialog.setNegativeButton("Tidak") { d2, i ->
                 {
 
                 }

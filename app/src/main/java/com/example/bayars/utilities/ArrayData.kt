@@ -4,18 +4,22 @@ class ArrayData {
 
     companion object {
         val bulan = arrayOf(
-            "Januari",
-            "Februari",
-            "Maret",
-            "April",
-            "Mei",
-            "Juni",
-            "Juli",
-            "Agustus",
-            "September",
-            "Oktober",
-            "November",
-            "Desember"
+            "1Januari",
+            "2Februari",
+            "3Maret",
+            "4April",
+            "5Mei",
+            "6Juni",
+            "7Juli",
+            "8Agustus",
+            "90September",
+            "91Oktober",
+            "92November",
+            "93Desember"
+        )
+        val lainnya = arrayOf(
+            "Uang_Gedung",
+            "Zakat"
         )
     }
 }

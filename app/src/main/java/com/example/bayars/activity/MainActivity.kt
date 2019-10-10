@@ -59,6 +59,8 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         toolbar.title = ""
         toolbar.setLogo(R.mipmap.ic_logo)
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

@@ -25,73 +25,73 @@ class Semester : AppCompatActivity() {
 
         januari.setOnClickListener {
             val mIntent = Intent(this@Semester, BayarActivity::class.java)
-            mIntent.putExtra("bulan", "Januari")
+            mIntent.putExtra("bulan", "1Januari")
             mIntent.putExtra("tahun", intent.getStringExtra("tahun"))
             startActivity(mIntent)
         }
         februari.setOnClickListener {
             val mIntent = Intent(this@Semester, BayarActivity::class.java)
-            mIntent.putExtra("bulan", "Februari")
+            mIntent.putExtra("bulan", "2Februari")
             mIntent.putExtra("tahun", intent.getStringExtra("tahun"))
             startActivity(mIntent)
         }
         maret.setOnClickListener {
             val mIntent = Intent(this@Semester, BayarActivity::class.java)
-            mIntent.putExtra("bulan", "Maret")
+            mIntent.putExtra("bulan", "3Maret")
             mIntent.putExtra("tahun", intent.getStringExtra("tahun"))
             startActivity(mIntent)
         }
         april.setOnClickListener {
             val mIntent = Intent(this@Semester, BayarActivity::class.java)
-            mIntent.putExtra("bulan", "April")
+            mIntent.putExtra("bulan", "4April")
             mIntent.putExtra("tahun", intent.getStringExtra("tahun"))
             startActivity(mIntent)
         }
         mei.setOnClickListener {
             val mIntent = Intent(this@Semester, BayarActivity::class.java)
-            mIntent.putExtra("bulan", "Mei")
+            mIntent.putExtra("bulan", "5Mei")
             mIntent.putExtra("tahun", intent.getStringExtra("tahun"))
             startActivity(mIntent)
         }
         juni.setOnClickListener {
             val mIntent = Intent(this@Semester, BayarActivity::class.java)
-            mIntent.putExtra("bulan", "Juni")
+            mIntent.putExtra("bulan", "6Juni")
             mIntent.putExtra("tahun", intent.getStringExtra("tahun"))
             startActivity(mIntent)
         }
         juli.setOnClickListener {
             val mIntent = Intent(this@Semester, BayarActivity::class.java)
-            mIntent.putExtra("bulan", "Juli")
+            mIntent.putExtra("bulan", "7Juli")
             mIntent.putExtra("tahun", intent.getStringExtra("tahun"))
             startActivity(mIntent)
         }
         agustus.setOnClickListener {
             val mIntent = Intent(this@Semester, BayarActivity::class.java)
-            mIntent.putExtra("bulan", "Agustus")
+            mIntent.putExtra("bulan", "8Agustus")
             mIntent.putExtra("tahun", intent.getStringExtra("tahun"))
             startActivity(mIntent)
         }
         september.setOnClickListener {
             val mIntent = Intent(this@Semester, BayarActivity::class.java)
-            mIntent.putExtra("bulan", "September")
+            mIntent.putExtra("bulan", "9September")
             mIntent.putExtra("tahun", intent.getStringExtra("tahun"))
             startActivity(mIntent)
         }
         oktober.setOnClickListener {
             val mIntent = Intent(this@Semester, BayarActivity::class.java)
-            mIntent.putExtra("bulan", "Oktober")
+            mIntent.putExtra("bulan", "91Oktober")
             mIntent.putExtra("tahun", intent.getStringExtra("tahun"))
             startActivity(mIntent)
         }
         november.setOnClickListener {
             val mIntent = Intent(this@Semester, BayarActivity::class.java)
-            mIntent.putExtra("bulan", "November")
+            mIntent.putExtra("bulan", "92November")
             mIntent.putExtra("tahun", intent.getStringExtra("tahun"))
             startActivity(mIntent)
         }
         desember.setOnClickListener {
             val mIntent = Intent(this@Semester, BayarActivity::class.java)
-            mIntent.putExtra("bulan", "Desember")
+            mIntent.putExtra("bulan", "93Desember")
             mIntent.putExtra("tahun", intent.getStringExtra("tahun"))
             startActivity(mIntent)
         }

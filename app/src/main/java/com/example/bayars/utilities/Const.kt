@@ -13,7 +13,7 @@ class Const {
         const val NODE_SENDER_PHOTO = "senderphoto"
         const val NODE_IS_READ = "isread"
 
-        const val NODE_ID = "ID"
+        const val NODE_ID = "UID"
         const val NODE_NAME = "Nama"
         const val NODE_PHOTO = "Foto"
 

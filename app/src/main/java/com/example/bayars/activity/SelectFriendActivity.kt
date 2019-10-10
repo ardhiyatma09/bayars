@@ -28,7 +28,7 @@ class SelectFriendActivity : AppCompatActivity() {
     private var mAdapter: FriendListAdapter? = null
     internal lateinit var friendList: List<Friend>
 
-    val USERS_CHILD = "Akun"
+    val USERS_CHILD = "Akunku"
     internal lateinit var pfbd: ParseFirebaseData
 
     override fun onCreate(savedInstanceState: Bundle?) {

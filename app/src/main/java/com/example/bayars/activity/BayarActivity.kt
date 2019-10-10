@@ -121,7 +121,7 @@ class BayarActivity : AppCompatActivity() {
                 val uid = helperPrefs.getUI()
                 dbRef = FirebaseDatabase.getInstance().getReference("SPP/$uid")
                 dbRef.child("${intent.getStringExtra("tahun")}").child("${intent.getStringExtra("bulan")}")
-                    .child("status").setValue("Belum Konfirmasi")
+                    .child("status").setValue("M")
                 Toast.makeText(this, "Sukses!!", Toast.LENGTH_SHORT).show()
                 finish()
             } else {

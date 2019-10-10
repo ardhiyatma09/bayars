@@ -28,7 +28,7 @@ class InputSiswaAct : AppCompatActivity() {
         val regBtn = findViewById<View>(R.id.btn_regis) as Button
         val back = findViewById<View>(R.id.back_img) as ImageView
 
-        mDatabase = FirebaseDatabase.getInstance().getReference("Akun")
+        mDatabase = FirebaseDatabase.getInstance().getReference("Akunku")
         mDatabase2 = FirebaseDatabase.getInstance().getReference("SPP")
         regBtn.setOnClickListener(View.OnClickListener {
             Register()
@@ -51,7 +51,8 @@ class InputSiswaAct : AppCompatActivity() {
         val admin = "Admin"
         val status = "B"
         val tunggakan = "4.800.000"
-        val tunggakan2 = "500.000"
+        val tunggakan2 = "0"
+        val tunggakantotal = "4.800.000"
 
 
         val email = emailTxt.text.toString()
@@ -77,8 +78,11 @@ class InputSiswaAct : AppCompatActivity() {
                             mDatabase2.child(uid).child("2020").child(bulan).setValue(ModelData(status, "null"))
                             mDatabase2.child(uid).child("2021").child(bulan).setValue(ModelData(status, "null"))
                         }
+                        for (lainnya in ArrayData.lainnya) {
+                            mDatabase2.child(uid).child("Lainnya").child(lainnya).setValue(ModelData(status, "null"))
+                        }
 
-                        mDatabase.child(uid).child("ID").setValue(uid)
+                        mDatabase.child(uid).child("UID").setValue(uid)
                         mDatabase.child(uid).child("Nama").setValue(nama)
                         mDatabase.child(uid).child("Email").setValue(email)
                         mDatabase.child(uid).child("Alamat").setValue(alamat)
@@ -89,6 +93,7 @@ class InputSiswaAct : AppCompatActivity() {
                         mDatabase.child(uid).child("Foto").setValue("null")
                         mDatabase.child(uid).child("TunggakanSPP").setValue(tunggakan)
                         mDatabase.child(uid).child("TunggakanLainnya").setValue(tunggakan2)
+                        mDatabase.child(uid).child("TunggakanTotal").setValue(tunggakantotal)
                         if (email.split("@")[1].equals("admin.spp")) {
                             mDatabase.child(uid).child("Status").setValue(admin)
                             startActivity(Intent(this@InputSiswaAct, AdminActivity::class.java))

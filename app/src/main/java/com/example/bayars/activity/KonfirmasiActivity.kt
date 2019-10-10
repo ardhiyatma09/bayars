@@ -52,24 +52,6 @@ class KonfirmasiActivity : AppCompatActivity() {
         getDataOrder()
     }
 
-    fun getDataAdmin() {
-        val dbRefUser = FirebaseDatabase.getInstance().getReference("Akun/${helperPrefs.getUI()}")
-        dbRefUser.addValueEventListener(object : ValueEventListener {
-            override fun onCancelled(p0: DatabaseError) {
-
-            }
-
-            override fun onDataChange(p0: DataSnapshot) {
-                Log.e("uid", helperPrefs.getUI())
-                id_upload = p0.child("/id_laundri").value.toString()
-                getDataOrder()
-//                Toast.makeText(this@HomeAdmin, "${id_laundri.toString()}", Toast.LENGTH_SHORT).show()
-//                Log.e("lol", "${p0}")
-            }
-
-        })
-    }
-
     fun getDataOrder() {
         dbref = FirebaseDatabase.getInstance().getReference("SPP/${intent.getStringExtra("uidSiswa")}")
         dbref.addValueEventListener(object : ValueEventListener {
@@ -112,35 +94,6 @@ class KonfirmasiActivity : AppCompatActivity() {
                     }
 
                 }
-
-//                    for (dataS2 in dataS.children) {
-//                        val map = HashMap<String, Any>()
-//                        map.put("tahun", dataS.key.toString())
-//                        map.put(
-//                            dataS2.key.toString(),
-//                            ModelData(dataS2.child("bukti").value.toString(), dataS2.child("status").value.toString())
-//                        )
-//                        data.add(map)
-//                        e(
-//                            "data",
-//                            "${map.get("tahun")}/${dataS2.child("bukti").value.toString()}, " +
-//                                    dataS2.child("status").value.toString()
-//                        )
-//                    }
-
-
-//                    val addDataAll = dataSnapshot.getValue(UploadBuktiModel::class.java)
-////                    if (addDataAll!!.getId_upload() == id_upload.toLong()) {
-//                        addDataAll!!.setKey(dataSnapshot.key!!)
-//                        list!!.add(addDataAll)
-
-////                    }
-//                    Log.e("TAG_ERROR", "${list}")
-//                    Log.e("view", "${dataSnapshot}")
-
-
-//                adminkonfirmasiAdapter = AdminKonfirmasiAdapter(this@KonfirmasiActivity, data)
-//                rvadminkonfirmasi!!.adapter = adminkonfirmasiAdapter
             }
 
             override fun onCancelled(p0: DatabaseError) {
@@ -157,7 +110,7 @@ class KonfirmasiActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.action_chat -> {
-            startActivity(Intent(this, ChatAct::class.java))
+            startActivity(Intent(this, ChatActivity::class.java))
             true
         }
         R.id.action_logout -> {

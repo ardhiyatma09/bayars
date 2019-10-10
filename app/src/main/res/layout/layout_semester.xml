@@ -101,7 +101,7 @@
                         android:orientation="vertical">
 
                     <LinearLayout
-                            android:background="@drawable/bg_prof"
+                            android:background="@drawable/bg_smstr"
                             android:id="@+id/januari"
                             android:orientation="horizontal"
                             android:layout_marginTop="10dp"
@@ -116,7 +116,7 @@
                                 android:layout_height="wrap_content"/>
                     </LinearLayout>
                     <LinearLayout
-                            android:background="@drawable/bg_prof"
+                            android:background="@drawable/bg_smstr"
                             android:id="@+id/februari"
                             android:orientation="horizontal"
                             android:layout_marginTop="12dp"
@@ -131,7 +131,7 @@
                                 android:layout_height="wrap_content"/>
                     </LinearLayout>
                     <LinearLayout
-                            android:background="@drawable/bg_prof"
+                            android:background="@drawable/bg_smstr"
                             android:id="@+id/maret"
                             android:orientation="horizontal"
                             android:layout_marginTop="12dp"
@@ -146,7 +146,7 @@
                                 android:layout_height="wrap_content"/>
                     </LinearLayout>
                     <LinearLayout
-                            android:background="@drawable/bg_prof"
+                            android:background="@drawable/bg_smstr"
                             android:id="@+id/april"
                             android:orientation="horizontal"
                             android:layout_marginTop="12dp"
@@ -161,7 +161,7 @@
                                 android:layout_height="wrap_content"/>
                     </LinearLayout>
                     <LinearLayout
-                            android:background="@drawable/bg_prof"
+                            android:background="@drawable/bg_smstr"
                             android:id="@+id/mei"
                             android:orientation="horizontal"
                             android:layout_marginTop="12dp"
@@ -176,7 +176,7 @@
                                 android:layout_height="wrap_content"/>
                     </LinearLayout>
                     <LinearLayout
-                            android:background="@drawable/bg_prof"
+                            android:background="@drawable/bg_smstr"
                             android:id="@+id/juni"
                             android:orientation="horizontal"
                             android:layout_marginTop="12dp"
@@ -191,7 +191,7 @@
                                 android:layout_height="wrap_content"/>
                     </LinearLayout>
                     <LinearLayout
-                            android:background="@drawable/bg_prof"
+                            android:background="@drawable/bg_smstr"
                             android:id="@+id/juli"
                             android:orientation="horizontal"
                             android:layout_marginTop="12dp"
@@ -206,7 +206,7 @@
                                 android:layout_height="wrap_content"/>
                     </LinearLayout>
                     <LinearLayout
-                            android:background="@drawable/bg_prof"
+                            android:background="@drawable/bg_smstr"
                             android:id="@+id/agustus"
                             android:orientation="horizontal"
                             android:layout_marginTop="12dp"
@@ -221,7 +221,7 @@
                                 android:layout_height="wrap_content"/>
                     </LinearLayout>
                     <LinearLayout
-                            android:background="@drawable/bg_prof"
+                            android:background="@drawable/bg_smstr"
                             android:id="@+id/september"
                             android:orientation="horizontal"
                             android:layout_marginTop="12dp"
@@ -236,7 +236,7 @@
                                 android:layout_height="wrap_content"/>
                     </LinearLayout>
                     <LinearLayout
-                            android:background="@drawable/bg_prof"
+                            android:background="@drawable/bg_smstr"
                             android:id="@+id/oktober"
                             android:orientation="horizontal"
                             android:layout_marginTop="12dp"
@@ -251,7 +251,7 @@
                                 android:layout_height="wrap_content"/>
                     </LinearLayout>
                     <LinearLayout
-                            android:background="@drawable/bg_prof"
+                            android:background="@drawable/bg_smstr"
                             android:id="@+id/november"
                             android:orientation="horizontal"
                             android:layout_marginTop="12dp"
@@ -266,7 +266,7 @@
                                 android:layout_height="wrap_content"/>
                     </LinearLayout>
                     <LinearLayout
-                            android:background="@drawable/bg_prof"
+                            android:background="@drawable/bg_smstr"
                             android:id="@+id/desember"
                             android:orientation="horizontal"
                             android:layout_marginTop="12dp"

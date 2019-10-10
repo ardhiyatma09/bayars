@@ -101,7 +101,7 @@ class fr_beranda : Fragment() {
 
         }
 
-        val dbRefUser = FirebaseDatabase.getInstance().getReference("Akun/${helperPrefs.getUI()}")
+        val dbRefUser = FirebaseDatabase.getInstance().getReference("Akunku/${helperPrefs.getUI()}")
         dbRefUser.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
 
@@ -112,8 +112,9 @@ class fr_beranda : Fragment() {
                 if (p0.child("/Foto").value.toString() != "null") {
                     Glide.with(view.context)
                         .load(p0.child("/Foto").value.toString())
-                        .into(view.avatar)
+                        .into(view.avatar)  
                 }
+                view.tunggakantotal.text = p0.child("/TunggakanTotal").value.toString()
                 view.tunggakanspp.text = p0.child("/TunggakanSPP").value.toString()
                 view.tunggakanlainnya.text = p0.child("/TunggakanLainnya").value.toString()
                 view.nama.text = p0.child("/Nama").value.toString()

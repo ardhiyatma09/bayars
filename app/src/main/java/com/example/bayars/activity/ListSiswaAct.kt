@@ -14,11 +14,11 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_main.*
 
-class ListSiswaAct : AppCompatActivity(){
+class ListSiswaAct : AppCompatActivity() {
 
-    lateinit var ref : DatabaseReference
-    lateinit var list : MutableList<Siswa>
-    lateinit var listView : ListView
+    lateinit var ref: DatabaseReference
+    lateinit var list: MutableList<Siswa>
+    lateinit var listView: ListView
     lateinit var fAuth: FirebaseAuth
 
 
@@ -34,7 +34,7 @@ class ListSiswaAct : AppCompatActivity(){
         toolbar.setLogo(R.mipmap.ic_logo)
 
         fAuth = FirebaseAuth.getInstance()
-        ref = FirebaseDatabase.getInstance().getReference("Akun")
+        ref = FirebaseDatabase.getInstance().getReference("Akunku")
         list = mutableListOf()
         listView = findViewById(R.id.listview)
 
@@ -46,12 +46,12 @@ class ListSiswaAct : AppCompatActivity(){
             }
 
             override fun onDataChange(p0: DataSnapshot) {
-                if (p0.exists()){
-                    for (h in p0.children){
+                if (p0.exists()) {
+                    for (h in p0.children) {
                         val user = h.getValue(Siswa::class.java)
                         list.add(user!!)
                     }
-                    val adapter = AdapterListSiswa(applicationContext,R.layout.siswa,list)
+                    val adapter = AdapterListSiswa(applicationContext, R.layout.siswa, list)
                     listView.adapter = adapter
                     listView.setOnItemClickListener { parent, view, position, id ->
                         val mIntent = Intent(this@ListSiswaAct, KonfirmasiActivity::class.java)
@@ -70,7 +70,7 @@ class ListSiswaAct : AppCompatActivity(){
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.action_chat -> {
-            startActivity(Intent(this, ChatAct::class.java))
+            startActivity(Intent(this, ChatActivity::class.java))
             true
         }
         R.id.action_logout -> {

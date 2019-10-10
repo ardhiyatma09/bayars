@@ -31,9 +31,9 @@ class ParseFirebaseData {
 
     fun getAllUser(dataSnapshot: DataSnapshot): ArrayList<Friend> {
         val frnds = ArrayList<Friend>()
-        var name: String? = null
-        var id: String? = null
-        var photo: String? = null
+        var name: String? = ""
+        var id: String? = ""
+        var photo: String? = ""
         for (data in dataSnapshot.children) {
             name = data.child(NODE_NAME).value!!.toString()
 //

@@ -52,7 +52,7 @@ class BayarLainnyaActivity : AppCompatActivity() {
     @TargetApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.bayar_activity)
+        setContentView(R.layout.bayar_lainnya_activity)
 
         helperPref = PrefsHelper(this)
 
@@ -120,8 +120,8 @@ class BayarLainnyaActivity : AppCompatActivity() {
             if (upload_img.isNotEmpty()) {
                 val uid = helperPrefs.getUI()
                 dbRef = FirebaseDatabase.getInstance().getReference("SPP/$uid")
-                dbRef.child("${intent.getStringExtra("tahun")}").child("${intent.getStringExtra("bulan")}")
-                    .child("status").setValue("B")
+                dbRef.child("${intent.getStringExtra("tahun")}").child("${intent.getStringExtra("tahun")}")
+                    .child("status").setValue("M")
                 Toast.makeText(this, "Sukses!!", Toast.LENGTH_SHORT).show()
                 finish()
             } else {
